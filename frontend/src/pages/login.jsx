@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     try {
       console.log("formdata in login page",formdata)
-      const result = await axios.post("http://localhost:5050/api/user/login",formdata)
+      const result = await axios.post("http://localhost:5050/api/user/login",formdata,{withCredentials: true})
       console.log("result after submitting formdata in login page",result)
       toast.success("login successfull")
 

@@ -1,25 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import "tailwindcss";
 
 
-:root{
-  --ui-font: "Source Code Pro";
-}
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  font-family: var(--ui-font);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #fff;
-  color: #111;
-}
-
-/* Optional: set headings / smaller adjustments */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-}
 
 @theme{
-  --color-lightred: #ff4f7f;
+  --font-display: "Source Code Pro", sans-serif;
 
 }

@@ -29,6 +29,7 @@ const Register = () => {
         nickname:"",
         codename:""
       })
+      
 
       Navigate('/home')
       

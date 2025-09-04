@@ -10,12 +10,12 @@ import Login from './pages/login'
 function App() {
 
   return (
-    <div>
+    <div className='font-display'>
       <Routes>
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/landing' element={<Landing/>}></Route>
-        <Route path='/' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/' element={<Login/>}></Route>
         <Route path='*' element={<Navigate to='/'/>}></Route>
       </Routes>
       <ToastContainer position="top-center" autoClose={3000}/>

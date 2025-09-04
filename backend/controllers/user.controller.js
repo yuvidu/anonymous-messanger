@@ -20,7 +20,9 @@ export const signup = async (req , res) => {
         firstname:firstname||null
     })
     await newuser.save();
+    res.cookie('userdata',{nickname, codename},{secure: false, sameSite: 'Strict', maxAge: 48 * 60 * 60 * 1000 })
     res.status(201).json({ message: 'user created', user: { nickname, codename, firstname } });
+    return;
 }
 
 export const login = async (req , res) => {
@@ -32,6 +34,8 @@ export const login = async (req , res) => {
             res.status(400).json({message:"user not found"})
             return;
         }
+        const cook = res.cookie('userdata',JSON.stringify({nickname:userexistence.nickname, codename:userexistence.codename, id:userexistence._id}),{secure: false, sameSite: 'Strict', maxAge: 48 * 60 * 60 * 1000 })
+        console.log("Cookie set:", cook.userdata);
         res.status(200).json({message:"login successfull",
             user:{ nickname: userexistence.nickname,
             codename: userexistence.codename,

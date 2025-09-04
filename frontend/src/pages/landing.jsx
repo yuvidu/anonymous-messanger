@@ -18,7 +18,7 @@ const landing = () => {
     <div class="h-screen w-screen flex justify-center items-center bg-[#272525] flex-col gap-20">
         <h1 
         className="text-6xl text-center font-bold duration-1000"
-        style={{ color: colors[changingColor], fontFamily: "Source Code Pro" }} >
+        style={{ color: colors[changingColor]}} >
           Anonymous Messanger
         </h1>
         <button class="text-amber-900 bg-amber-100 rounded-2xl py-2 px-4 text-3xl hover:bg-[#8C85B9] hover:text-blue-950 active:bg-green-900 active:text-amber-300">Start</button>
