@@ -1,22 +1,38 @@
 import { useState } from 'react'
 import Cookies from "js-cookie";
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { socket } from '../socket';
 
 const Home = () => {
   const [preference,setpreference] = useState()
   const [user,setuser] = useState()
+  const Navigate = useNavigate()
 
   const handlepreference = (e) => {
     setpreference(e.target.value)
   }
-
+  
   useEffect(()=>{
+    
     const userdata = Cookies.get('userdata')
     if(userdata){
       setuser(JSON.parse(userdata))
     }
+      const userid = user?.id || null;
+
+
+        socket.emit("user-online",userid)
+
+        return () => {
+            socket.off("online-users");
+        }
     
-  })
+  },[])
+  const handlenavigationonlinepage = ()=>{
+    Navigate('/onlineusers',{state:{userID:user.id}})
+
+  }
   
   
   return (
@@ -35,6 +51,8 @@ const Home = () => {
             <option value="Female">Female</option> 
           </select>
           <button className='w-1/5 text-2xl mt-8 ml-2 bg-[#B4B985] px-10 py-2 rounded-3xl hover:bg-amber-300 active:bg-blue-500'>START CHAT</button>
+          <button disabled={!user} className='w-1/5 text-2xl mt-8 ml-2 bg-[#B4B985] px-10 py-2 rounded-3xl hover:bg-amber-300 active:bg-blue-500' onClick={handlenavigationonlinepage}>See who is online</button>
+
           </div>
         </div>
       </div>

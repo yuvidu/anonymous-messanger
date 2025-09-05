@@ -1,4 +1,4 @@
-import e from "express";
+import express from "express";
 import Message from "../models/message.model.js";
 
 export const sendMessage = async (req,res) => {

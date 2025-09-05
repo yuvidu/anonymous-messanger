@@ -32,6 +32,7 @@ const Register = () => {
       
     } catch (error) {
       console.log("error in submit function in login page",error)
+      toast.error(error.response.data.message)
     }
   }
   const gotoRegister = () => {
