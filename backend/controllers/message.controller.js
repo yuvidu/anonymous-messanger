@@ -1,8 +1,8 @@
-import express from "express";
 import Message from "../models/message.model.js";
 
-export const sendMessage = async (req,res) => {
-    const {message,senderid} = req.body;
+
+{/*export const sendMessage = async (req,res) => {
+    const {message,senderid,roomid} = req.body;
     const {receiverid} = req.params;
 
     if(!message || !senderid || !receiverid){
@@ -10,12 +10,12 @@ export const sendMessage = async (req,res) => {
         console.log("Missing fields:", {message, senderid, receiverid});
         return;
     }
-
     try {
         const newmessage = new Message({
             message,
             senderid,
-            receiverid
+            receiverid,
+            roomid
         })
         await newmessage.save();
         res.status(201).json({message:"message sent"
@@ -25,9 +25,11 @@ export const sendMessage = async (req,res) => {
         
     } catch (error) {
         console.log("Error while sending message:", error);
-        res.status(500).json({message:"internal server error"})     
+        res.status(500).json({message:"internal server error"})  
+        return;   
     }
-}
+}  */}
+
 export const getMessages = async (req,res) => {
     const usercookie = req.cookies.userdata;
     if(usercookie){
@@ -39,7 +41,7 @@ export const getMessages = async (req,res) => {
             res.status(400).json({message:"receiver id is required"})
             return;
         }
-        const messages = await message.find({
+        const messages = await Message.find({
         senderid:{ $in: [senderid, receiverid]},
         receiverid:{ $in: [receiverid, senderid]}
         })
@@ -49,8 +51,20 @@ export const getMessages = async (req,res) => {
     else{
         res.status(401).json({message:"unauthorized when fetching messages"})
         return;
-    }
-    
-   
-    
+    }  
 }
+export const getMessages2 = async (req,res) => {
+    const {receiverId,senderId,roomId} = req.query;
+    if(!receiverId || !senderId || !roomId){
+        res.status(400).json({message:"all fields are required"})
+        return;
+    }
+    const messages = await Message.find({
+        senderid:{ $in: [senderId, receiverId]},
+        receiverid:{ $in: [receiverId, senderId]}
+    })
+
+    res.status(200).json({messages})    
+    return;
+}
+

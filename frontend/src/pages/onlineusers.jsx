@@ -2,8 +2,6 @@ import { useEffect,useState } from "react";
 import { useLocation } from "react-router-dom";
 import { socket } from "../socket";
 
-
-
 function OnlineUsers() {
     const location = useLocation();
     const userID = location.state?.userID || {};
@@ -19,7 +17,6 @@ function OnlineUsers() {
         }
     },[userID])
 
-    
     return (
         <div>
             <h1>current user  {userID}</h1>
@@ -31,9 +28,5 @@ function OnlineUsers() {
             </ul>   
         </div>  
     )
-
-
-
-
 }
 export default OnlineUsers
