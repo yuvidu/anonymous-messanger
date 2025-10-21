@@ -27,9 +27,9 @@ function App() {
     <div className='font-display'>
       <Routes>
         <Route path='/home' element={<Home/>}></Route>
-        <Route path='/landing' element={<Landing/>}></Route>
+        <Route path='/' element={<Landing/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
-        <Route path='/' element={<Login/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
         <Route path='/onlineusers' element={<OnlineUsers/>}></Route>
         <Route path='/chat/:roomId' element={<Chat/>}></Route>
         <Route path='*' element={<Navigate to='/'/>}></Route>

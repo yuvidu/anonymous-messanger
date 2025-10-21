@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { socket } from '../socket'
 import { useState } from 'react'
@@ -70,28 +70,28 @@ const chat = () => {
   }, [roomId,userId, partnerId]);
 
   return (
-    <div>
-      <h1>Chat Room: {roomId}</h1>
+    <div className='bg-[#f9cbcb] h-screen w-screen flex flex-col gap-2 p-2'>
+      {/* <h1>Chat Room: {roomId}</h1>
       <h2>Your ID: {userId}</h2>
-      <h2>Partner ID: {partnerId}</h2>
-      <div>
+      <h2>Partner ID: {partnerId}</h2> */}
+      <div className='flex flex-col gap-2 w-1/5'>
         {prevmessages.map((prevmessages, index) => (
           <div key={index}>
-            <div>
+            <div >
               {prevmessages.senderid === userId ? (
-                <p className='text-blue-500'>You : {prevmessages.message}</p>
+                <p className='text-blue-500 text-end bg-blue-100 rounded-3xl p-2'>You : {prevmessages.message}</p>
               ) : (
-                <p className='text-green-500'>Partner : {prevmessages.message}</p>
+                <p className='text-green-500 text-start bg-green-100 rounded-3xl p-2'>Partner : {prevmessages.message}</p>
               )}
             </div>
           </div>
         ))}
       </div>
       <hr />
-      <h3>Send a message:</h3>
+      {/* <h3>Send a message:</h3> */}
       <form action="submit" onSubmit={handleSendMessage}>
-        <input type="text" value={messages} onChange={(e) => setmessages(e.target.value)} className='bg-amber-800'/>
-        <button type='submit'>submit</button>
+        <input type="text" value={messages} onChange={(e) => setmessages(e.target.value)} className='bg-amber-300 rounded-3xl p-2 w-1/5 mr-2'/>
+        <button type='submit' className='bg-red-300 rounded-3xl p-2 hover:bg-blue-300 active:bg-blue-100'>send</button>
       </form>
     </div>
   )

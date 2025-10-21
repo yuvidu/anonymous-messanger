@@ -31,7 +31,7 @@ const Register = () => {
       })
       
 
-      Navigate('/home')
+      Navigate('/login')
       
       
     } catch (error) {
@@ -39,7 +39,7 @@ const Register = () => {
     }
   }
   const gotoLogin = () => {
-    Navigate('login')
+    Navigate('/login')
   }
 
 
