@@ -81,7 +81,7 @@ const chat = () => {
               {prevmessages.senderid === userId ? (
                 <p className='text-blue-500 text-end bg-blue-100 rounded-3xl p-2'>You : {prevmessages.message}</p>
               ) : (
-                <p className='text-green-500 text-start bg-green-100 rounded-3xl p-2'>Partner : {prevmessages.message}</p>
+                <p className='text-green-500 text-start bg-green-100 rounded-3xl p-2'>x-man : {prevmessages.message}</p>
               )}
             </div>
           </div>

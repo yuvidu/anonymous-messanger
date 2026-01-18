@@ -141,6 +141,15 @@ app.use("/api/user", userRoute);
 app.use("/api/message", messageRoute);
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message:"Server is running",
+        status:"success",
+        version:"1.0.0",
+        Timestamp: new Date().toISOString()
+    })
+})
+
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     connectDB();
